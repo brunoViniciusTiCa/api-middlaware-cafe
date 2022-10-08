@@ -17,9 +17,7 @@
          "node_modules/@types"
      ]
    },
-   "include": [
-     "src/**/*.ts"
-   ],
+   "include": ["src/**/*.ts", "src/**/*.js", "tests/**/*.ts"],
    "exclude": [
      "node_modues"
    ]
