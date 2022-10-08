@@ -25,6 +25,8 @@
    },
    "scripts": {
       "dev": "nodemon src/index.ts",
-      "start": "ts-node src/index.ts"
+      "start": "ts-node src/index.ts",
+      "build": "npm run tsc",
+      "tsc": "tsc"
    }
 }
