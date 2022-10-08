@@ -5,8 +5,8 @@ class BusinessRule {
     
     public async mergeTwoUrlsAndListOfProductsInStock(request: Request, response: Response) {
         try {
-            const token = request.headers.authorization;
-            const accept = request.headers.accept;
+            const token = String(request.headers.authorization);
+            const accept = String(request.headers.accept);
             
             const apiClover = await ApiExtern.ApiClover(token, accept);
             const fullApiClover = await apiClover.elements.map((el: any) => el);
@@ -14,7 +14,7 @@ class BusinessRule {
             const apiCloverQuantity = await ApiExtern.ApiCloverQuantity(token, accept);
             const fullApiCloverQuantity = await apiCloverQuantity.elements.map((el: any) => el);
 
-            const result1 = fullApiClover.map(el => {
+            const result1 = fullApiClover.map((el: any) => {
                 return {
                     id: el.id,
                     name: el.name,
@@ -24,7 +24,7 @@ class BusinessRule {
                 }
             });
 
-            const result2 = fullApiCloverQuantity.map(el => {
+            const result2 = fullApiCloverQuantity.map((el: any) => {
                 return {
                     id: el.item.id,
                     stockCount: el.stockCount,
@@ -34,7 +34,7 @@ class BusinessRule {
                 }
             });
 
-            const result = [];
+            const result: any[] = []
             const elements = [];
             result1.map((el: any, i: string | number) => {
                 result.push({elements: { itemsx: result1[i], itemStock: result2[i] }});
