@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import ApiExtern from "../services/ApiExtern";
+import ApiExtern from "../services/ApiExternClover";
 
 class BusinessRule {
     

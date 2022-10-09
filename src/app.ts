@@ -1,5 +1,6 @@
 import * as express from 'express';
 import product from './routes/Product.routes';
+import woocommerce from './routes/WooCommerce.routes';
 import * as bodyParser from "body-parser";
 import * as cors from 'cors';
 import * as dotenv from "dotenv";
@@ -49,5 +50,6 @@ export class App {
 
   private routes(): void {
     this.express.use('/api', product);
+    this.express.use('/api', woocommerce);
   }
 }

@@ -13,6 +13,8 @@
    "dependencies": {
       "@types/axios": "^0.14.0",
       "@types/dotenv": "^8.2.0",
+      "@types/woocommerce__woocommerce-rest-api": "^1.0.2",
+      "@woocommerce/woocommerce-rest-api": "^1.0.1",
       "body-parser": "^1.20.0",
       "cors": "^2.8.5",
       "dotenv": "^16.0.3",
