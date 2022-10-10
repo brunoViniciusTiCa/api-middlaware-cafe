@@ -3,6 +3,6 @@ import { Router } from 'express';
 
 const routes = Router();
 
-routes.get('/:products', WooCommerceController.listProductWooCommerce);
+routes.get('/allProducts', WooCommerceController.listProductWooCommerce);
 
 export default routes;

@@ -1,16 +1,12 @@
-import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api"
+const axios = require('axios').default
 
 class AuthWooCommerce {
-    public async wooCommerceFunc(paramersAll: string) {
-        const WooCommerce = new WooCommerceRestApi({
-            url: String(`${process.env.URLWOOCOMMERCE}/${paramersAll}`),
-            consumerKey: String(process.env.CONSUMERKEY),
-            consumerSecret: String(process.env.CONSUMERSECRET),
-            version: 'wc/v3'
-        });
+    public async wooCommerceFunc(consumerKey: String, consumerSecret: String) {
 
-        return WooCommerce;
-
+        const api = await axios.get(
+            `${process.env.URL_WOOCOMMERCE}/products?consumer_key=${consumerKey}&consumer_secret=${consumerSecret}`
+        )
+        return api.data;
     }
 }
 

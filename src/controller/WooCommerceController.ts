@@ -4,15 +4,18 @@ import AuthWooCommerce from "../services/ApiExternAuthWooCommerce";
 class WooCommerceController {
     public async listProductWooCommerce(request: Request, response: Response) {
         try {
-            const paramersAll = request.params.products;
-            return response.json(await AuthWooCommerce.wooCommerceFunc(paramersAll));
+
+            const consumerKey = await String(request.query.consumer_key);
+            const consumerSecret = await String(request.query.consumer_secret);
+
+            const res = await AuthWooCommerce.wooCommerceFunc(consumerKey, consumerSecret);
+            return response.json(res);
         }
         catch(err){
             return response.json({
                 message: 'Problemas ao Listar Items WooCommerce!'
             });
         }
-      
     }
 }
 
