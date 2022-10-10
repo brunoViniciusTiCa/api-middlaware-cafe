@@ -22,10 +22,8 @@ export class App {
 
   private middlewares(): void {
 
-    // const allowedOrigins = ['http://localhost:5173'];
     const allowedContentTypes = ['Content-Type'];
     const options: cors.CorsOptions = {
-      // origin: allowedOrigins,
       methods: "GET, OPTIONS, PUT, POST, DELETE",
       allowedHeaders: allowedContentTypes,
       credentials : true
@@ -33,13 +31,10 @@ export class App {
 
     this.express.use(bodyParser.json());
     this.express.use(cors(options));
-
-    // this.express.use(cors({
-    //    origin: "http://localhost:5173"
-    // }))
     dotenv.config();
     this.express.use(express.urlencoded({ extended: true }));
     this.express.use(express.json());
+    
   }
 
   private listen(): void {
