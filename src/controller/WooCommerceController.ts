@@ -4,12 +4,7 @@ import AuthWooCommerce from "../services/ApiExternAuthWooCommerce";
 class WooCommerceController {
     public async listProductWooCommerce(request: Request, response: Response) {
         try {
-
-            const consumerKey = await String(request.query.consumer_key);
-            const consumerSecret = await String(request.query.consumer_secret);
-
-            const res = await AuthWooCommerce.wooCommerceFunc(consumerKey, consumerSecret);
-            return response.json(res);
+            return response.json(await AuthWooCommerce.wooCommerceFunc());
         }
         catch(err){
             return response.json({

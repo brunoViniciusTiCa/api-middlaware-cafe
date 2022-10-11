@@ -1,7 +1,7 @@
 const axios = require('axios').default
 
 class AuthWooCommerce {
-    public async wooCommerceFunc(consumerKey: String, consumerSecret: String) {
+    public async wooCommerceFunc() {
         const pathUrl = await `${process.env.URL_WOOCOMMERCE}/products?`
         const consumersKey = await `consumer_key=${process.env.CONSUMER_KEY}` 
         const consumersSecret = await `&consumer_secret=${process.env.CONSUMER_SECRET}` 
