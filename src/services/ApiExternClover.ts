@@ -1,6 +1,6 @@
 const axios = require('axios').default
 
-class ApiExtern {
+class ApiExternClover {
     public async ApiClover(token: string, accept: string) {
         const api = await axios.get(process.env.URL, {
             headers: {
@@ -22,4 +22,4 @@ class ApiExtern {
     }
 }
 
-export default new ApiExtern();
+export default new ApiExternClover();
