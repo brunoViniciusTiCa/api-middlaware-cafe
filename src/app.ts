@@ -1,7 +1,11 @@
 import * as express from 'express';
+
 import product from './routes/Product.routes';
 import woocommerce from './routes/WooCommerce.routes';
+import middlaware from './routes/Middlaware.routes';
+
 import * as bodyParser from "body-parser";
+import { createConnection } from 'typeorm';
 import * as cors from 'cors';
 import * as dotenv from "dotenv";
 
@@ -12,6 +16,7 @@ export class App {
   constructor() {
     this.express = express();
     this.middlewares();
+    this.database();
     this.routes();
     this.listen();
   }
@@ -43,8 +48,13 @@ export class App {
     })
   }
 
+  private database(): void {
+    createConnection();
+  }
+
   private routes(): void {
     this.express.use('/api', product);
     this.express.use('/api', woocommerce);
+    this.express.use('/api', middlaware);
   }
 }
