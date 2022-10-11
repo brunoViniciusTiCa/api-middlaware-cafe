@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import ApiExtern from "../services/ApiExtern";
+import ApiExternClover from "../services/ApiExternClover";
 
 class BusinessRule {
     
@@ -8,10 +8,10 @@ class BusinessRule {
             const token = String(request.headers.authorization);
             const accept = String(request.headers.accept);
             
-            const apiClover = await ApiExtern.ApiClover(token, accept);
+            const apiClover = await ApiExternClover.ApiClover(token, accept);
             const fullApiClover = await apiClover.elements.map((el: any) => el);
             
-            const apiCloverQuantity = await ApiExtern.ApiCloverQuantity(token, accept);
+            const apiCloverQuantity = await ApiExternClover.ApiCloverQuantity(token, accept);
             const fullApiCloverQuantity = await apiCloverQuantity.elements.map((el: any) => el);
 
             const result1 = fullApiClover.map((el: any) => {
