@@ -29,6 +29,19 @@ class ProductController {
         }
         
     }
+
+    public async findOneProductMiddlaware(request: Request, response: Response) {
+        try{
+            const id = await request.params.id;
+            const listId = await getRepository(Middlaware).findOne(id);
+            return response.json(listId);
+        }
+        catch(err) {
+            return response.json({
+                message: 'Problemas ao Listar One Middlaware!'
+            })
+        }
+    }
 }
 
 export default new ProductController();

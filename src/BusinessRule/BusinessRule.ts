@@ -5,13 +5,10 @@ class BusinessRule {
     
     public async mergeTwoUrlsAndListOfProductsInStock(request: Request, response: Response) {
         try {
-            const token = String(request.headers.authorization);
-            const accept = String(request.headers.accept);
-            
-            const apiClover = await ApiExternClover.ApiClover(token, accept);
+            const apiClover = await ApiExternClover.ApiClover();
             const fullApiClover = await apiClover.elements.map((el: any) => el);
             
-            const apiCloverQuantity = await ApiExternClover.ApiCloverQuantity(token, accept);
+            const apiCloverQuantity = await ApiExternClover.ApiCloverQuantity();
             const fullApiCloverQuantity = await apiCloverQuantity.elements.map((el: any) => el);
 
             const result1 = fullApiClover.map((el: any) => {
@@ -40,7 +37,7 @@ class BusinessRule {
                 result.push({elements: { itemsx: result1[i], itemStock: result2[i] }});
             })
 
-            return response.json({...result});
+            return response.json({result});
         }
         catch(err){
             return response.json({

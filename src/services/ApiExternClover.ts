@@ -1,21 +1,21 @@
 const axios = require('axios').default
 
 class ApiExternClover {
-    public async ApiClover(token: string, accept: string) {
+    public async ApiClover() {
         const api = await axios.get(process.env.URL, {
             headers: {
-                'accept': accept,
-                'authorization': `Bearer ${token}`,
+                'accept': process.env.ACCEPT,
+                'authorization': process.env.TOKEN,
             }
         })
         return api.data;
     }
     
-    public async ApiCloverQuantity(token: string, accept: string) {
+    public async ApiCloverQuantity() {
         const api = await axios.get(process.env.URL_ITEM, {
             headers: {
-                'accept': accept,
-                'authorization': `Bearer ${token}`,
+                'accept': process.env.ACCEPT,
+                'authorization': process.env.TOKEN,
             }
         })
         return api.data;
