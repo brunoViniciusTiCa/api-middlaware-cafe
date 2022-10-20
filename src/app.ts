@@ -27,8 +27,12 @@ export class App {
 
   private middlewares(): void {
 
+    // this.express.use(express.urlencoded({ extended: true })) 
+    // this.express.use(express.json());
+    const allowedOrigins = ['https://latinquarter.online/wp-json/wc/v3'];
     const allowedContentTypes = ['Content-Type'];
     const options: cors.CorsOptions = {
+      origin: allowedOrigins,
       methods: "GET, OPTIONS, PUT, POST, DELETE",
       allowedHeaders: allowedContentTypes,
       credentials : true
@@ -39,6 +43,9 @@ export class App {
     dotenv.config();
     this.express.use(express.urlencoded({ extended: true }));
     this.express.use(express.json());
+    this.express.use(cors({
+      origin: "https://latinquarter.online/wp-json/wc/v3"
+   }))
     
   }
 
